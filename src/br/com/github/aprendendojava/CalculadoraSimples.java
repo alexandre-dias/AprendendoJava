@@ -2,25 +2,25 @@ package br.com.github.aprendendojava;
 
 public class CalculadoraSimples {
 	
-	public double soma(double valor_a, double z) {
-		return valor_a + z;
+	public double soma(double valorA, double z) {
+		return valorA + z;
 	}
 	
-	public double subtracao(double valor_a, double valor_b) {
-		return valor_a - valor_b;
+	public double subtracao(double valorA, double valorB) {
+		return valorA - valorB;
 	}
 	
-	public double multiplicacao(double valor_a, double valor_b) {
-		return valor_a * valor_b;
+	public double multiplicacao(double valorA, double valorB) {
+		return valorA * valorB;
 	}
 	
-	public double divisao(double valor_a, double valor_b) {
+	public double divisao(double valorA, double valorB) {
 		double calculo = 0;
 		
-		if (valor_b == 0) {
+		if (valorB == 0) {
 			System.out.println("Divisão por zero");
 		} else {
-			calculo = valor_a / valor_b;
+			calculo = valorA / valorB;
 		}
 		
 		return calculo;
