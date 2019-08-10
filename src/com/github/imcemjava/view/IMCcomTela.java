@@ -13,7 +13,7 @@ public class IMCcomTela {
 
 	private JFrame tela;
 	private JTextField txtAltura, txtPeso;
-	private JLabel lblAltura, lblPeso, lblResultado;
+	private JLabel lblAltura, lblPeso, lblResultado, lblStatus;
 	private JButton btnOk, btnLimpar;
 
 	public IMCcomTela() {
@@ -31,8 +31,9 @@ public class IMCcomTela {
 		lblAltura = new JLabel("Altura: ");
 		lblPeso = new JLabel("Peso: ");
 		btnOk = new JButton("OK");
-		btnLimpar = new JButton("C");
+		btnLimpar = new JButton("Clear");
 		lblResultado = new JLabel("");
+		lblStatus = new JLabel("");
 
 		//
 		// Ajustes dos componentes de Tela
@@ -41,9 +42,10 @@ public class IMCcomTela {
 		txtAltura.setBounds(60, 10, 90, 18);
 		lblPeso.setBounds(10, 50, 90, 10);
 		txtPeso.setBounds(60, 50, 90, 18);
-		btnOk.setBounds(10, 80, 55, 20);
-		btnLimpar.setBounds(95, 80, 55, 20);
+		btnOk.setBounds(10, 80, 65, 20);
+		btnLimpar.setBounds(83, 80, 65, 20);
 		lblResultado.setBounds(10, 105, 140, 20);
+		lblStatus.setBounds(10, 125, 140, 20);
 
 		//
 		// Adicionando os componentes na Tela
@@ -55,6 +57,7 @@ public class IMCcomTela {
 		tela.add(btnOk);
 		tela.add(btnLimpar);
 		tela.add(lblResultado);
+		tela.add(lblStatus);
 
 		//
 		// Ajustes do JFrame
@@ -83,6 +86,21 @@ public class IMCcomTela {
 					peso = Double.parseDouble(txtPeso.getText());
 
 					imc = peso / (altura * altura) * 10000;
+
+					if (imc < 18.5) {
+						lblStatus.setText("Desnutrição");
+					} else if (imc >= 18.5 && imc <= 24.9) {
+						lblStatus.setText("Eutrofia");
+					} else if (imc >= 25 && imc <= 29.9) {
+						lblStatus.setText("Sobrepeso");
+					} else if (imc >= 30 && imc <= 34.9) {
+						lblStatus.setText("Obesidade grau I");
+					} else if (imc >= 35 && imc <= 39.9) {
+						lblStatus.setText("Obesidade grau II");
+					} else {
+						lblStatus.setText("Obesidade grau III");
+					}
+
 					String r = (String.format("%.2f", imc).toString());
 					lblResultado.setText(r);
 				} catch (NumberFormatException e) {
